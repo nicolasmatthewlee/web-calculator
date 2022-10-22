@@ -159,6 +159,31 @@ function process(input) {
 
         }
 
+    } else if (input == '+/-') {
+        if (operator==null) {
+
+            if (num1.length<9) {
+                if (!(num1.includes('-'))) {
+                    num1='-'+num1;
+                } else {
+                    num1 = num1.slice(1);
+                }
+                display.textContent=num1;
+            }
+            
+        } else {
+
+            if (num2.length<9) {
+                if (!(num2.includes('-'))) {
+                    num2='-'+num2;
+                } else {
+                    num2 = num2.slice(1);
+                }
+                display.textContent=num2;
+            }
+
+        }
+    
     } else if (input == '=') {
         compute();
     } else if (input == 'clear') {
