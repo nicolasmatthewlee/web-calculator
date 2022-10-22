@@ -113,15 +113,15 @@ function compute() {
     decimal_loc=result.toString().indexOf('.')
 
     // format number to fit in display
-    if ((decimal_loc == -1) && (result.toString().length > 11)) {
+    if ((decimal_loc == -1) && (result.toString().length > 9)) {
         display.textContent='error';
-    } else if (decimal_loc > 11) {
+    } else if (decimal_loc > 9) {
         display.textContent='error';
     } else {
-        formatted_result=result.toString().slice(start=0,end=11)
+        formatted_result=result.toString().slice(start=0,end=9)
         display.textContent=formatted_result;
     }
-    
+
     num1='';
     num2='';
     operator=null;
@@ -132,11 +132,19 @@ function process(input) {
 
     if (typeof(input)=='number') {
         if (operator==null) {
-            num1+=input;
-            display.textContent=num1;
+
+            if (num1.length<9) {
+                num1+=input;
+                display.textContent=num1;
+            }
+            
         } else {
-            num2+=input;
-            display.textContent=num1+operator+num2;
+
+            if (num1.length+operator.length+num2.length<9) {
+                num2+=input;
+                display.textContent=num1+operator+num2;
+            }
+
         }
         
     } else if (['+','-','x','/','%','sqrt'].includes(input)) {
