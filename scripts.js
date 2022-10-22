@@ -15,29 +15,21 @@ grid.style.width='500px';
 grid.style.height='500px';
 calculator_container.appendChild(grid);
 
-for (let row=0;row<4;row++) {
+for (let i=1;i<20;i++) {
 
-    for (let col=0;col<5;col++) {
-
-        let button_number=row*5+col+1;
-
-        const button = document.createElement('button');
-        if (button_number==14) {
-            button.style.gridRow='span 2';
-            button.style.height='100px';
-        } else if (button_number==20) {
-            break;
-        } else {
-            button.style.height='50px';
-        }
-        button.style.width='50px';
-        button.textContent=button_number;
-        /*button.style.gridRowStart=row;
-        button.style.gridRowEnd=row+1;
-        button.style.gridColumnStart=col;
-        button.style.gridColumnEnd=col+1
-        */
-        grid.appendChild(button);
+    let height='50px';
+    let span='span 1';
+        
+    if (i==14) {
+        height='100px';
+        span='span 2';
     }
-    
+
+    const button = document.createElement('button');
+    button.style.width='50px';
+    button.style.height=height;
+    button.style.gridRow=span;
+    button.textContent=i;
+    grid.appendChild(button);
+
 }
