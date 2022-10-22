@@ -151,12 +151,12 @@ function process(input) {
         
     } else if (['+','-','x','/','%'].includes(input)) {
 
-        // if there is a num1
-        if (num1.length>0) {
-
+        // if there is a num1 and num2, compute
+        if ((num1.length>0) && (num2.length>0)) {
+            compute();
             operator=input;
-            display.textContent=operator;
-
+        } else if (num1.length>0) {
+            operator=input;
         }
 
     } else if (input == '+/-') {
