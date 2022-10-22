@@ -52,7 +52,7 @@ function key_to_input(key_number) {
         case 4:
             return '%';
         case 5:
-            return 'sqrt';
+            return 'clear';
         case 6:
             return 4;
         case 7:
@@ -124,7 +124,7 @@ function compute() {
         display.textContent=formatted_result;
     }
 
-    num1='';
+    num1=result.toString();
     num2='';
     operator=null;
 
@@ -149,7 +149,7 @@ function process(input) {
 
         }
         
-    } else if (['+','-','x','/','%','sqrt'].includes(input)) {
+    } else if (['+','-','x','/','%'].includes(input)) {
 
         // if there is a num1
         if (num1.length>0) {
@@ -161,6 +161,11 @@ function process(input) {
 
     } else if (input == '=') {
         compute();
+    } else if (input == 'clear') {
+        num1='';
+        num2='';
+        operator=null;
+        display.textContent='';
     }
 }
 
