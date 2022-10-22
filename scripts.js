@@ -89,24 +89,39 @@ let num2='';
 let operator=null;
 
 function compute() {
+
+    let result=null;
+
     switch (operator) {
         case '+':
-            display.textContent=+num1 + +num2;
+            result=+num1 + +num2;
             break;
         case '-':
-            display.textContent=+num1 - +num2;
+            result=+num1 - +num2;
             break;
         case 'x':
-            display.textContent=+num1 * +num2;
+            result=+num1 * +num2;
             break;
         case '/':
-            display.textContent=+num1 / +num2;
+            result=+num1 / +num2;
             break;
         case '%':
-            display.textContent=+num1 % +num2;
+            result=+num1 % +num2;
             break;
     }
 
+    decimal_loc=result.toString().indexOf('.')
+
+    // format number to fit in display
+    if ((decimal_loc == -1) && (result.toString().length > 11)) {
+        display.textContent='error';
+    } else if (decimal_loc > 11) {
+        display.textContent='error';
+    } else {
+        formatted_result=result.toString().slice(start=0,end=11)
+        display.textContent=formatted_result;
+    }
+    
     num1='';
     num2='';
     operator=null;
