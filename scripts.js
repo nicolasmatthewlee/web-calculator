@@ -140,18 +140,36 @@ function process(input) {
             
         } else {
 
-            if (num1.length+operator.length+num2.length<9) {
-                num2+=input;
-                display.textContent=num1+operator+num2;
-            }
+            if (num1.length>=9) {
 
+                if (operator.length+num2.length<9) {
+                    num2+=input;
+                    display.textContent=operator+num2;
+                }
+
+            } else {
+
+                if (num1.length+operator.length+num2.length<9) {
+                    num2+=input;
+                    display.textContent=num1+operator+num2;
+                }
+
+            }
         }
         
     } else if (['+','-','x','/','%','sqrt'].includes(input)) {
 
+        // if there is a num1
         if (num1.length>0) {
-            operator=input;
-            display.textContent=num1+operator;
+
+            if (num1.length>=9) {
+                operator=input;
+                display.textContent=operator;
+            } else {
+                operator=input;
+                display.textContent=num1+operator;
+            }
+
         }
 
     } else if (input == '=') {
