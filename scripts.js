@@ -13,14 +13,20 @@ let gap=10;
 
 const view = document.createElement('div');
 view.style.backgroundColor = 'rgb(0,200,0)';
+view.style.display='flex';
+view.style.justifyContent='right';
 view.style.height='100px';
 view.style.fontSize='70px';
-view.style.textAlign='right';
 view.style.border=`${gap}px solid lightgrey`;
 view.style.borderRadius=`${gap}px ${gap}px 0px 0px`;
-
-view.textContent='000000000';
 calculator_container.appendChild(view);
+
+const input = document.createElement('div');
+input.textContent='00000000000';
+//input.style.backgroundColor='blue';
+input.style.marginTop='20px';
+input.style.marginRight='20px';
+view.appendChild(input);
 
 let button_width=80;
 let button_height=60;
