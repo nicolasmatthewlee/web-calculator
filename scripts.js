@@ -21,11 +21,11 @@ view.style.border=`${gap}px solid lightgrey`;
 view.style.borderRadius=`${gap}px ${gap}px 0px 0px`;
 calculator_container.appendChild(view);
 
-const input = document.createElement('div');
-input.textContent='00000000000';
-input.style.marginTop='20px';
-input.style.marginRight='20px';
-view.appendChild(input);
+const display = document.createElement('div');
+//input.textContent='00000000000';
+display.style.marginTop='20px';
+display.style.marginRight='20px';
+view.appendChild(display);
 
 let button_width=80;
 let button_height=60;
@@ -84,10 +84,57 @@ function key_to_input(key_number) {
     }
 }
 
+let num1='';
+let num2='';
+let operator=null;
+
+function compute() {
+    switch (operator) {
+        case '+':
+            display.textContent=+num1 + +num2;
+            break;
+        case '-':
+            display.textContent=+num1 - +num2;
+            break;
+        case 'x':
+            display.textContent=+num1 * +num2;
+            break;
+        case '/':
+            display.textContent=+num1 / +num2;
+            break;
+        case '%':
+            display.textContent=+num1 % +num2;
+            break;
+    }
+
+    num1='';
+    num2='';
+    operator=null;
+
+}
+
+function process(input) {
+    if (typeof(input)=='number') {
+        if (operator==null) {
+            num1+=input;
+            display.textContent=num1;
+        } else {
+            num2+=input;
+            display.textContent=num2;
+        }
+        
+    } else if (['+','-','x','/','%','sqrt'].includes(input)) {
+        operator=input;
+        display.textContent=operator;
+    } else if (input == '=') {
+        compute();
+    }
+}
+
 for (let i=1;i<20;i++) {
 
     const button = document.createElement('button');
-    button.addEventListener('click',() => {input.textContent=key_to_input(i);});
+    button.addEventListener('click',() => {process(key_to_input(i));});
 
     button.style.width=button_width+'px';
     button.textContent=key_to_input(i);
