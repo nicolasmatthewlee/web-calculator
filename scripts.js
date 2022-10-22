@@ -184,6 +184,36 @@ function process(input) {
 
         }
     
+    } else if (input == '.') {
+
+        if (operator==null) {
+
+            if (num1.includes('.')) {
+                if (num1.indexOf('.')==num1.length-1) {
+                    num1=num1.slice(0,num1.length-1);
+                    display.textContent=num1;
+                } 
+            } else {
+                if (num1.length<9) {
+                    num1=num1+'.';
+                    display.textContent=num1;
+                }
+            }
+
+        } else {
+            if (num2.includes('.')) {
+                if (num2.indexOf('.')==num2.length-1) {
+                    num2=num2.slice(0,num2.length-1);
+                    display.textContent=num2;
+                } 
+            } else {
+                if (num2.length<9) {
+                    num2=num2+'.';
+                    display.textContent=num2;
+                }
+            }
+        }
+    
     } else if (input == '=') {
         compute();
     } else if (input == 'clear') {
