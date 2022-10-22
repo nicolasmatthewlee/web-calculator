@@ -108,6 +108,8 @@ function compute() {
         case '%':
             result=+num1 % +num2;
             break;
+        default:
+            result=num1;
     }
 
     decimal_loc=result.toString().indexOf('.')
@@ -140,21 +142,11 @@ function process(input) {
             
         } else {
 
-            if (num1.length>=9) {
-
-                if (operator.length+num2.length<9) {
-                    num2+=input;
-                    display.textContent=operator+num2;
-                }
-
-            } else {
-
-                if (num1.length+operator.length+num2.length<9) {
-                    num2+=input;
-                    display.textContent=num1+operator+num2;
-                }
-
+            if (num2.length<9) {
+                num2+=input;
+                display.textContent=num2;
             }
+
         }
         
     } else if (['+','-','x','/','%','sqrt'].includes(input)) {
@@ -162,13 +154,8 @@ function process(input) {
         // if there is a num1
         if (num1.length>0) {
 
-            if (num1.length>=9) {
-                operator=input;
-                display.textContent=operator;
-            } else {
-                operator=input;
-                display.textContent=num1+operator;
-            }
+            operator=input;
+            display.textContent=operator;
 
         }
 
