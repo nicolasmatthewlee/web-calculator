@@ -23,14 +23,12 @@ calculator_container.appendChild(view);
 
 const input = document.createElement('div');
 input.textContent='00000000000';
-//input.style.backgroundColor='blue';
 input.style.marginTop='20px';
 input.style.marginRight='20px';
 view.appendChild(input);
 
 let button_width=80;
 let button_height=60;
-
 
 const grid = document.createElement('div');
 grid.style.border=`${gap}px solid lightgrey`;
@@ -42,11 +40,57 @@ grid.style.columnGap=gap+'px';
 grid.style.display='grid';
 calculator_container.appendChild(grid);
 
+// converts from key number to input
+function key_to_input(key_number) {
+    switch (key_number) {
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+        case 3:
+            return 3;
+        case 4:
+            return '%';
+        case 5:
+            return 'sqrt';
+        case 6:
+            return 4;
+        case 7:
+            return 5;
+        case 8:
+            return 6;
+        case 9:
+            return 'x';
+        case 10:
+            return '/';
+        case 11:
+            return 7;
+        case 12:
+            return 8;
+        case 13:
+            return 9;
+        case 14:
+            return '+';
+        case 15:
+            return '-';
+        case 16:
+            return 0;
+        case 17:
+            return '.';
+        case 18:
+            return '+/-';
+        case 19:
+            return '=';
+    }
+}
+
 for (let i=1;i<20;i++) {
 
     const button = document.createElement('button');
+    button.addEventListener('click',() => {input.textContent=key_to_input(i);});
+
     button.style.width=button_width+'px';
-    button.textContent=i;
+    button.textContent=key_to_input(i);
 
     if (i==14) {
         button.style.height=button_height*2+gap;
