@@ -114,18 +114,23 @@ function compute() {
 }
 
 function process(input) {
+
     if (typeof(input)=='number') {
         if (operator==null) {
             num1+=input;
             display.textContent=num1;
         } else {
             num2+=input;
-            display.textContent=num2;
+            display.textContent=num1+operator+num2;
         }
         
     } else if (['+','-','x','/','%','sqrt'].includes(input)) {
-        operator=input;
-        display.textContent=operator;
+
+        if (num1.length>0) {
+            operator=input;
+            display.textContent=num1+operator;
+        }
+
     } else if (input == '=') {
         compute();
     }
