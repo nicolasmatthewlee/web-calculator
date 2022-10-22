@@ -22,7 +22,7 @@ for (let i=1;i<20;i++) {
     button.textContent=i;
 
     if (i==14) {
-        button.style.height='100px';
+        button.style.height='110px';
         button.style.gridRow='span 2';
     } else {
         button.style.height='50px';
