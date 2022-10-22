@@ -11,15 +11,27 @@ document.body.appendChild(calculator_container);
 
 let gap=10;
 
+let calculator_body = document.createElement('div');
+calculator_body.style.backgroundColor='grey';
+calculator_body.style.border=`${gap}px solid grey`;
+calculator_body.style.borderRadius=gap+'px';
+calculator_container.appendChild(calculator_body);
+
+let view_body = document.createElement('div');
+view_body.style.backgroundColor='lightgrey';
+view_body.style.border=`${gap}px solid lightgrey`;
+view_body.style.borderRadius=`${gap}px ${gap}px 0px 0px`;
+calculator_body.appendChild(view_body);
+
 const view = document.createElement('div');
 view.style.backgroundColor = 'rgb(0,200,0)';
 view.style.display='flex';
 view.style.justifyContent='right';
 view.style.height='100px';
 view.style.fontSize='70px';
-view.style.border=`${gap}px solid lightgrey`;
-view.style.borderRadius=`${gap}px ${gap}px 0px 0px`;
-calculator_container.appendChild(view);
+view.style.border=`${gap}px solid rgb(0,200,0)`;
+view.style.borderRadius=`${gap}px`;
+view_body.appendChild(view);
 
 const display = document.createElement('div');
 display.textContent='000000000';
@@ -39,7 +51,7 @@ grid.style.grid = `repeat(4,${button_height+'px'}) / repeat(5,${button_width+'px
 grid.style.rowGap=gap+'px';
 grid.style.columnGap=gap+'px';
 grid.style.display='grid';
-calculator_container.appendChild(grid);
+calculator_body.appendChild(grid);
 
 // converts from key number to input
 function key_to_input(key_number) {
