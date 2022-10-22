@@ -22,7 +22,8 @@ view.style.borderRadius=`${gap}px ${gap}px 0px 0px`;
 calculator_container.appendChild(view);
 
 const display = document.createElement('div');
-//input.textContent='00000000000';
+display.textContent='000000000';
+display.style.color='darkgreen';
 display.style.marginTop='20px';
 display.style.marginRight='20px';
 view.appendChild(display);
